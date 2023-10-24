@@ -1,27 +1,42 @@
 #!/bin/bash 
 
-# Prerequisites
-# if [[ "$#" -lt 1 ]]; then
-#     echo "usage: $0 <target dir> [<version>]"
-#     exit 1
-# fi
+function check-env() {
+    echo "check-env"
+    if [ -z "$DIVI_CLIENT_DIR" ]; then
+        echo " ** DIVI_CLIENT_DIR env var must not be null"
+        exit 1
+    fi
+    echo "DIVI_CLIENT_DIR: '${DIVI_CLIENT_DIR}'"
 
-# like: divi-openapi-client-okhttp-gson
-CLIENT_DIR=${1:-build/openapi-generator-cli-generated}
-VERSION=${2:-$(date "+%Y.%m.%d")}
+    if [ -z "$DIVI_CLIENT_VERSION" ]; then
+        echo " ** DIVI_CLIENT_VERSION env var must not be null"
+        exit 1
+    fi
+    echo "DIVI_CLIENT_VERSION: '${DIVI_CLIENT_VERSION}'"
+}
 
-# make sure the whole path to that dir exists
-mkdir -p ${CLIENT_DIR}
-
+function generate-client() {
+    read -r -d '' CMD << EOM
 openapi-generator-cli generate \
    -i https://uat.intensivregister.de/api/public/api-docs \
-   --api-package de.vertama.divi.client.api \
-   --model-package de.vertama.divi.client.model \
-   --invoker-package de.vertama.divi.client.invoker \
-   --group-id de.vertama \
+   --api-package ${DIVI_CLIENT_GROUP}.divi.client.api \
+   --model-package ${DIVI_CLIENT_GROUP}.divi.client.model \
+   --invoker-package ${DIVI_CLIENT_GROUP}.divi.client.invoker \
+   --group-id ${DIVI_CLIENT_GROUP} \
    --artifact-id divi-openapi-client \
-   --artifact-version ${VERSION} \
+   --artifact-version ${DIVI_CLIENT_VERSION} \
    -g java \
    -p java8=true \
    --library okhttp-gson \
-   -o "${CLIENT_DIR}"
+   -o "${DIVI_CLIENT_DIR}"
+EOM
+    echo "generating client:
+${CMD}"
+    
+    # prep target dirpath
+    mkdir -p ${DIVI_CLIENT_DIR}
+    # finally run the generator
+    $CMD
+}
+
+(set -a; source .env && check-env && generate-client)

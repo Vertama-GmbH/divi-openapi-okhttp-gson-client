@@ -39,11 +39,13 @@ plugins {
 sourceSets {
     main {
         java {
+            println("source dir: \"${Meta.client_dir}/src/main/java\"")
             srcDir("${Meta.client_dir}/src/main/java")
         }
     }
     test {
         java {
+            println("test source dir: \"${Meta.client_dir}/src/test/java\"")
             srcDir("${Meta.client_dir}/src/test/java")
 
         }
