@@ -5,8 +5,8 @@ group = System.getenv("DIVI_CLIENT_GROUP")
 version = System.getenv("DIVI_CLIENT_VERSION")
 
 object Meta {
-    val desc = "A featureless java lib only to test publishing java libs to maven central"
-    val githubRepo = "Vertama-GmbH/zero-feature-maven-central-publish-test"
+    val desc = System.getenv("DIVI_CLIENT_DESC")
+    val repo = System.getenv("DIVI_CLIENT_REPO")
     val release = "https://s01.oss.sonatype.org/service/local/"
     val snapshot = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
     val license = "Apache-2.0"
@@ -139,7 +139,7 @@ publishing {
             pom {
                 name.set(project.name)
                 description.set(Meta.desc)
-                url.set("https://github.com/${Meta.githubRepo}")
+                url.set(Meta.repo)
                 licenses {
                     license {
                         name.set(Meta.license)
@@ -156,9 +156,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection.set("scm:git:git://github.com/${Meta.githubRepo}.git")
-                    developerConnection.set("scm:git:git://github.com/#${Meta.githubRepo}.git")
-                    url.set("https://github.com/${Meta.githubRepo}")
+                    connection.set(Meta.repo)
+                    developerConnection.set(Meta.repo)
+                    url.set(Meta.repo)
                 }
             }
         }
@@ -166,14 +166,15 @@ publishing {
 }
 
 signing {
-    //sign(publishing.publications["mavenJava"])
-
-    val key = providers.environmentVariable("GPG_SIGNING_KEY")
-    val phrase = providers.environmentVariable("GPG_SIGNING_PASSPHRASE")
-    if (!key.isPresent || !phrase.isPresent) {
+    val key = System.getenv("GPG_SIGNING_KEY")
+    if (key == null) {
         throw GradleException(" ** GPG_SIGNING_KEY a/o GPG_SIGNING_PASSPHRASE env vars missing")
     }
-    useInMemoryPgpKeys(key.get(), phrase.get())
+    val phrase = System.getenv("GPG_SIGNING_PASSPHRASE")
+    if (phrase == null) {
+        throw GradleException(" ** GPG_SIGNING_KEY a/o GPG_SIGNING_PASSPHRASE env vars missing")
+    }
+    useInMemoryPgpKeys(key, phrase)
 
     val extension = extensions.getByName("publishing") as PublishingExtension
     sign(extension.publications)
@@ -186,14 +187,15 @@ nexusPublishing {
         sonatype {
             nexusUrl.set(uri(Meta.release))
             snapshotRepositoryUrl.set(uri(Meta.snapshot))
-            val ossrhUsername = providers.environmentVariable("OSSRH_USERNAME")
-            val ossrhPassword = providers.environmentVariable("OSSRH_PASSWORD")
-            if (!ossrhUsername.isPresent || !ossrhPassword.isPresent) {
+
+            val ossrhUsername = System.getenv("OSSRH_USERNAME")
+            val ossrhPassword = System.getenv("OSSRH_PASSWORD")
+            if (ossrhUsername == null || ossrhPassword == null) {
                 throw GradleException(" ** username, password must be defined in ENV as: 'OSSRH_USERNAME' and 'OSSRH_PASSWORD'")
             }
 
-            username.set(ossrhUsername.get())
-            password.set(ossrhPassword.get())
+            username.set(ossrhUsername)
+            password.set(ossrhPassword)
         }
     }
 }
