@@ -40,7 +40,7 @@ And off ya go.
 
 # Results
 
-This is where it all ends up: `https://central.sonatype.com/artifact/de.vertama/divi-openapi-client/versions`. As you might easly spot, the version number is just the date I did it. Logic behind it is, the version is basically a null info in this case, it is all about the actuall openapi client from the dive. So I decided to put the date in the version, so I can see when I pulled it off. 
+This is very it all ends up: `https://central.sonatype.com/artifact/de.vertama/divi-openapi-client/versions`. As you might easly spot, the version number is just the date I did it. Logic behind it is, the version is basically a null info in this case, it is all about the actuall openapi client from the dive. So I decided to put the date in the version, so I can see when I pulled it off. 
 
 ```XML
 # maven pom
@@ -58,3 +58,38 @@ implementation 'de.vertama:divi-openapi-client:2023.10.24.1'
 ```
 
 have fun.
+
+
+
+
+
+
+**(no fun) insprirational reading list:**
+#maven #nexus #gradle 
+ - How to publish artifact to Maven Central via Gradle
+   <https://www.albertgao.xyz/2018/01/18/how-to-publish-artifact-to-maven-central-via-gradle/>
+   Good background info on GPG signing and Sonatype Account creations
+ - No-bullshit guide on publishing your Gradle projects to Maven Central
+   <https://madhead.me/posts/no-bullshit-maven-publish/>
+   looks like a good background article
+ - Gradle Nexus Publish Plugin 
+   <https://github.com/gradle-nexus/publish-plugin#gradle-nexus-publish-plugin>
+   This is the actual plugin I use to publish
+ - Publish a Java library to Maven Central without Maven or Gradle
+   <https://mccue.dev/pages/6-1-22-upload-to-maven-central>
+ - Gradle publishing plugins, a decision matrix
+   <https://mbonnin.medium.com/gradle-publishing-plugins-a-decision-matrix-a2f04bba6f13>
+ - Create and publish OpenAPI Java clients using Gradle and Maven S3
+   <https://www.mailslurp.com/blog/generate-and-publish-java-openapi-client-with-gradle/>
+ - How to create a gradle library and publish it on Nexus
+   <https://medium.com/@simionrazvan/how-to-create-a-gradle-library-and-publish-it-on-nexus-34be19b520aa>
+ - Publish to Maven Central using Gradle: What it takes to publish your Kotlin
+   library with Gradle to Maven Central.
+   <https://h4pehl.medium.com/publish-your-gradle-artifacts-to-maven-central-f74a0af085b1>
+ - The actual maven central server
+   <https://central.sonatype.com/search?q=de.vertama&namespace=de.vertama>
+ - The Sonatype Repository Server: Where the maven central packages come from
+   <https://s01.oss.sonatype.org/#stagingRepositories>
+ - feel the pain: Override publish properties from parent build.gradle
+   <https://stackoverflow.com/questions/76638324/override-publish-properties-from-parent-build-gradle>
+
