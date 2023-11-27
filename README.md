@@ -11,7 +11,7 @@ _Notice: This is pretty ugly, quick and dirty scripting, and for sure not optima
 
 ## What does it Do?
 
-It pulls the openapi spec form the DIVI repo ([https://uat.intensivregister.de/api/public/api-docs](https://uat.intensivregister.de/api/public/api-docs)), generates a java client lib from it, and publishes the maven central repository. 
+It pulls the openapi spec form the DIVI repo ([https://uat.intensivregister.de/api/public/api-docs](https://uat.intensivregister.de/api/public/api-docs)), generates a java client lib from it, and publishes it the maven central repository. My point is that it does this completly automatic and it does not need changes to the original DIVI repo sources and build scripts.  
 
 ## What you have to do
 
