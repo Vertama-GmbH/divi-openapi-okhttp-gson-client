@@ -15,7 +15,18 @@ function check-env() {
     echo "DIVI_CLIENT_VERSION: '${DIVI_CLIENT_VERSION}'"
 }
 
+function update-client-doc-generated() {
+    GENERATED_DOC_DIR=./client-doc-generated
+    #rm -rf ${GENERATED_DOC_DIR}
+    mkdir -p ${GENERATED_DOC_DIR}
+    cp -a ${DIVI_CLIENT_DIR}/README.md ${DIVI_CLIENT_DIR}/docs ${GENERATED_DOC_DIR}
+}
+
 function generate-client() {
+    # prep target dirpath
+    mkdir -p ${DIVI_CLIENT_DIR}
+
+    # build cmdline
     read -r -d '' CMD << EOM
 openapi-generator-cli generate \
    -i https://uat.intensivregister.de/api/public/api-docs \
@@ -33,10 +44,8 @@ EOM
     echo "generating client:
 ${CMD}"
     
-    # prep target dirpath
-    mkdir -p ${DIVI_CLIENT_DIR}
-    # finally run the generator
+    # run the generator
     $CMD
 }
 
-(set -a; source .env && check-env && generate-client)
+(set -a; source .env && check-env && generate-client && update-client-doc-generated)
