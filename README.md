@@ -1,19 +1,19 @@
 # A Java DIVI generated client with okhttp and gson from its official OpenAPI spec
 
-This package is just wrapping a maven-central / sonatype nexus publishing around the OpenAPI java client the the https://www.intensivregister.de/.
+This repo wraps a maven-central / sonatype nexus publishing around the OpenAPI java client fof the https://www.intensivregister.de/.
 
-So all actual source for the DIVI ([https://intensivregister.de](https://intensivregister.de)) interaction does not come from here, and we do not claim any rights on that. On all that is in here, which comes from the Vertama GmbH, you can use it in any way you like. The real client source/specification comes from: https://uat.intensivregister.de/api/public/api-docs. 
+All actual divi client source for the DIVI ([https://intensivregister.de](https://intensivregister.de)) interaction does not come from here, and we do not claim any rights on that. On all that is in here, which comes from the Vertama GmbH, you can use it in any way you like. The real client source/specification comes from: https://uat.intensivregister.de/api/public/api-docs.
 
 For convenience the generated client original api docs are included with this git repo at: [client-doc-generated/README.md](client-doc-generated/README.md).
 
-_Notice: This is pretty ugly, quick and dirty scripting, and for sure not optimal, nor minimal, nor an any way a recommendation on how to do things. After many, many, many attemps to embed the nexus/maven publishing in a build script, with maven, or kotlin, or an init script, or a a build script, or patching the openapi build script templates, or or or, I ended up with this. It works for me, and may help you, but in no way claims any authority on how you should craft your java build processes with gradle or otherwise._
+_Notice: This is a pretty ugly, quick and dirty scripting hack, and for sure neither optimal, nor minimal, nor in any way a recommendation on how to do things. After many, many, attemps to embed the nexus/maven publishing in a build script, with maven, or kotlin, or an init script, or a a build script, or patching the openapi build script templates, or or or, I ended up with this. It works for me, and may help you, but in no way claims any authority on how you should craft your java build processes with gradle or otherwise. ymmv_
 
 
-## What does it Do?
+## What does this repo do?
 
 It pulls the openapi spec form the DIVI repo ([https://uat.intensivregister.de/api/public/api-docs](https://uat.intensivregister.de/api/public/api-docs)), generates a java client lib from it, and publishes it the maven central repository. My point is that it does this completly automatic and it does not need changes to the original DIVI repo sources and build scripts.  
 
-## What you have to do
+## What you have to do?
 
 Check some of the background info to understand how to create a Sonatype account and on how to provide the needed GPG public/private key infra. You need that for crytographic signing your publications, which is must for nexus publishing. 
 
@@ -42,7 +42,7 @@ And off ya go.
 
 # Results
 
-This is very it all ends up at [https://central.sonatype.com/artifact/de.vertama/divi-openapi-client/versions](https://central.sonatype.com/artifact/de.vertama/divi-openapi-client/versions). As you might easly spot, the (default) version number is just the date the generate script was run. Logic behind it is, the version is basically a null info in this case, it is all about the actuall openapi client from the divi orgiginal sources. So I decided to put the date in the version, which shows when the generation was done. When doing multiple publishing attempts a day, just add a counter number to the date version.  
+This is where it ends up: [https://central.sonatype.com/artifact/de.vertama/divi-openapi-client/versions](https://central.sonatype.com/artifact/de.vertama/divi-openapi-client/versions). As you might easly spot, the (default) version number is just the date the generate script was run. Logic behind it is, the version is basically a null info in this case, it is all about the actuall openapi client from the divi orgiginal sources. So I decided to put the date in the version, which shows when the generation was done. When doing multiple publishing attempts a day, just add a counter number to the date version.  
 
 ```XML
 # maven pom
