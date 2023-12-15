@@ -19,7 +19,7 @@ Check some of the background info to understand how to create a Sonatype account
 
 You also need to install the actuall openapi generator. There are LOTS! of possibilites you could do this. I decided to go the npm way: `npm install @openapitools/openapi-generator-cli -g`. You could use a maven plugin, or whatever, but then you have to adjust the `generate.sh` script on your own. Should be possible, but I do not care. 
 
-## When you're ready, do this
+## When you're ready, do this:
 
  1. copy the `.env.example` file to `.env`, open it and fill in your content (give me a hint when its seems unclear what you have to fill in).
 
@@ -29,7 +29,7 @@ This package is 12 Factor (google it). It avoids any gradle init scripts, gradle
  read the script. Its basically pretty simple. It pulls and checks the .env configuration and runs the openapi generator. When things work out, you find the generated client source code in the DIVE_CLIENT_DIR.
 
  3. run `./env-gradle.sh <task>` to run the publishing process.
- Again, this is a very minimal wrapper around running the actual gradle, including pull and check of the .env config. What might be of notice here is the architecture decision I took: The gradle build I am useing here, is completely ignoring whatever build script the generated created. It used the hand crafted `build.gradle.kts` file in this directory. Any attempt of mine (2 weeks, yes I am to stupid for this java/gradle stack) to reuse that script, or build on it, or automatically replace it, or enhance it to contain what I need for publishing, or to configuer it, or or or, all this failed. So I gave up. Now, I have a build script that works, it defines the source sets to use the generated source, and the dependencies I hand copied from the generated build into my newly created script. Plus porting a fee settings and options. Ugly? For sure. Feel free to come up with a better idea, with still using the exact source of the generated client, and without any manual step needed to publish. 
+ Again, this is a very minimal wrapper around running the actual gradle, including pull and check of the .env config. What might be of notice here is the architecture decision I took: The gradle build I am useing here, is completely ignoring whatever build script the generated created. It used the hand crafted `build.gradle.kts` file in this directory. Any attempt of mine (2 weeks, yes I am to stupid for this java/gradle stack) to reuse originally genrated build script, or build on it, or automatically replace it, or enhance it to contain what I need for publishing, or to configuer it, or or or, all this failed. So I gave up. Now, I have a build script that works, it defines the source sets to use the generated source, and the dependencies I hand copied from the generated build into my newly created script. Plus porting a few settings and options. Ugly? For sure. Feel free to come up with a better idea, with still using the exact source of the generated client, and without any manual step needed to publish.
 
 A simple test to check your gradle build is: `./env-gradle.sh tasks`, which should list all the things you can ask for. 
 
