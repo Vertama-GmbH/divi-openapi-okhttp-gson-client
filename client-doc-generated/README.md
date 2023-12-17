@@ -2,7 +2,7 @@
 
 DIVI-Intensivregister API
 - API version: 1.0
-  - Build date: 2023-11-27T13:23:30.608024+01:00[Europe/Berlin]
+  - Build date: 2023-12-17T16:18:23.338353+01:00[Europe/Berlin]
 
 API for DIVI-Intensivregister
 
@@ -41,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>de.vertama</groupId>
   <artifactId>divi-openapi-client</artifactId>
-  <version>2023.11.27</version>
+  <version>2023.12.17</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -57,7 +57,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "de.vertama:divi-openapi-client:2023.11.27"
+     implementation "de.vertama:divi-openapi-client:2023.12.17"
   }
 ```
 
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/divi-openapi-client-2023.11.27.jar`
+* `target/divi-openapi-client-2023.12.17.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
