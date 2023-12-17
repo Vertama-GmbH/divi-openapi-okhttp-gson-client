@@ -1,6 +1,6 @@
 # A Java DIVI generated client with okhttp and gson from its official OpenAPI spec
 
-This repo wraps a maven-central / sonatype nexus publishing around the OpenAPI java client fof the https://www.intensivregister.de/.
+This repo wraps a maven-central / sonatype nexus publishing around the OpenAPI java client of the https://www.intensivregister.de/.
 
 All actual divi client source for the DIVI ([https://intensivregister.de](https://intensivregister.de)) interaction does not come from here, and we do not claim any rights on that. On all that is in here, which comes from the Vertama GmbH, you can use it in any way you like. The real client source/specification comes from: https://uat.intensivregister.de/api/public/api-docs, with further details on its usage at: https://github.com/Intensivregister/intensivregister-meldungsvalidierung.
 
