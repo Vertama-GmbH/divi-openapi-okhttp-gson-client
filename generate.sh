@@ -26,6 +26,10 @@ function generate-client() {
     # prep target dirpath
     mkdir -p ${DIVI_CLIENT_DIR}
 
+    # see: https://github.com/OpenAPITools/openapi-generator/issues/12550#issuecomment-1152596082
+    #   disallowAdditionalPropertiesIfNotPresent=false
+    ADDITIONAL_PROPERTIES=disallowAdditionalPropertiesIfNotPresent=false
+
     # build cmdline
     read -r -d '' CMD << EOM
 openapi-generator-cli generate \
@@ -36,6 +40,7 @@ openapi-generator-cli generate \
    --group-id ${DIVI_CLIENT_GROUP} \
    --artifact-id divi-openapi-client \
    --artifact-version ${DIVI_CLIENT_VERSION} \
+   --additional-properties=${ADDITIONAL_PROPERTIES} \
    -g java \
    -p java8=true \
    --library okhttp-gson \
