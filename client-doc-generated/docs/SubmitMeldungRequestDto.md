@@ -8,13 +8,8 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** |  |  |
-|**meldebereich** | [**SmallMeldebereichDto**](SmallMeldebereichDto.md) |  |  |
+|**meldebereich** | [**SmallMeldebereichRequestDto**](SmallMeldebereichRequestDto.md) |  |  |
 |**faelleCovidAktuell** | **Integer** |  |  [optional] |
-|**faelleCovidAktuellBeatmet** | **Integer** |  |  [optional] |
-|**faelleCovidAktuellHighFlowOxygen** | **Integer** |  |  [optional] |
-|**faelleCovidAktuellNichtInvasivBeatmet** | **Integer** |  |  [optional] |
-|**faelleCovidAktuellEcmo** | **Integer** |  |  [optional] |
-|**faelleCovidOhneSymptomatik** | **Integer** |  |  [optional] |
 |**betriebssituation** | [**BetriebssituationEnum**](#BetriebssituationEnum) |  |  [optional] |
 |**betriebseinschraenkungPersonal** | **Boolean** |  |  [optional] |
 |**betriebseinschraenkungRaum** | **Boolean** |  |  [optional] |
@@ -26,7 +21,6 @@
 |**neuaufnahmen** | [**SubmitNeuaufnahmenRequestDto**](SubmitNeuaufnahmenRequestDto.md) |  |  [optional] |
 |**varianten** | [**VariantenV2Dto**](VariantenV2Dto.md) |  |  [optional] |
 |**schwangereCovidStatus** | [**SchwangereCovidStatusDto**](SchwangereCovidStatusDto.md) |  |  [optional] |
-|**impfstatus** | [**ImpfstatusDto**](ImpfstatusDto.md) |  |  [optional] |
 |**impfstatusV2** | [**ImpfstatusV2Dto**](ImpfstatusV2Dto.md) |  |  [optional] |
 |**rsvStatus** | [**RsvStatusDto**](RsvStatusDto.md) |  |  [optional] |
 |**influenzaStatus** | [**InfluenzaStatusDto**](InfluenzaStatusDto.md) |  |  [optional] |

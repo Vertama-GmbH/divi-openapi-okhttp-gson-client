@@ -8,16 +8,11 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** |  |  |
-|**meldebereich** | [**SmallMeldebereichDto**](SmallMeldebereichDto.md) |  |  |
+|**meldebereich** | [**SmallMeldebereichResponseDto**](SmallMeldebereichResponseDto.md) |  |  |
 |**meldezeitpunkt** | **OffsetDateTime** |  |  [optional] |
 |**faelleCovidAktuell** | **Integer** |  |  [optional] |
-|**faelleCovidAktuellBeatmet** | **Integer** |  |  [optional] |
 |**faelleCovidGenesen** | **Integer** |  |  [optional] |
 |**faelleCovidVerstorben** | **Integer** |  |  [optional] |
-|**faelleCovidAktuellHighFlowOxygen** | **Integer** |  |  [optional] |
-|**faelleCovidAktuellNichtInvasivBeatmet** | **Integer** |  |  [optional] |
-|**faelleCovidAktuellEcmo** | **Integer** |  |  [optional] |
-|**faelleCovidOhneSymptomatik** | **Integer** |  |  [optional] |
 |**faelleCovidAelterAls17j** | **Integer** |  |  [optional] |
 |**betriebssituation** | [**BetriebssituationEnum**](#BetriebssituationEnum) |  |  [optional] |
 |**betriebseinschraenkungPersonal** | **Boolean** |  |  [optional] |
@@ -38,7 +33,6 @@
 |**neuaufnahmen** | [**SubmitNeuaufnahmenResponseDto**](SubmitNeuaufnahmenResponseDto.md) |  |  [optional] |
 |**varianten** | [**VariantenV2Dto**](VariantenV2Dto.md) |  |  [optional] |
 |**schwangereCovidStatus** | [**SchwangereCovidStatusDto**](SchwangereCovidStatusDto.md) |  |  [optional] |
-|**impfstatus** | [**ImpfstatusDto**](ImpfstatusDto.md) |  |  [optional] |
 |**impfstatusV2** | [**ImpfstatusV2Dto**](ImpfstatusV2Dto.md) |  |  [optional] |
 |**rsvStatus** | [**RsvStatusDto**](RsvStatusDto.md) |  |  [optional] |
 |**influenzaStatus** | [**InfluenzaStatusDto**](InfluenzaStatusDto.md) |  |  [optional] |

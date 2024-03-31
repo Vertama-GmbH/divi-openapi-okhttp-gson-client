@@ -8,6 +8,7 @@ All URIs are relative to *https://uat.intensivregister.de/api*
 | [**getLetzteMeldungForMeldebereich**](MeldebereichControllerApi.md#getLetzteMeldungForMeldebereich) | **GET** /stammdaten/meldebereich/{meldebereichId}/letzte-meldung |  |
 | [**getMeldebereichById**](MeldebereichControllerApi.md#getMeldebereichById) | **GET** /stammdaten/meldebereich/{meldebereichId} |  |
 | [**getMeldungenForMeldebereich**](MeldebereichControllerApi.md#getMeldungenForMeldebereich) | **GET** /stammdaten/meldebereich/{meldebereichId}/meldungen |  |
+| [**getMeldungenForMeldebereichIncludeInactive**](MeldebereichControllerApi.md#getMeldungenForMeldebereichIncludeInactive) | **GET** /stammdaten/meldebereich/{meldebereichId}/allmeldungen |  |
 | [**getMyMeldebereiche**](MeldebereichControllerApi.md#getMyMeldebereiche) | **GET** /stammdaten/meldebereich |  |
 | [**getMyMeldebereichePublic**](MeldebereichControllerApi.md#getMyMeldebereichePublic) | **GET** /stammdaten/meldebereich/public |  |
 | [**getPrivateMeldebereichById**](MeldebereichControllerApi.md#getPrivateMeldebereichById) | **GET** /stammdaten/meldebereich/{meldebereichId}/private |  |
@@ -234,7 +235,7 @@ public class Example {
 
 
 
-Will return all Meldungen for the given Meldebereich
+Will return active Meldungen for the given Meldebereich
 
 ### Example
 ```java
@@ -266,6 +267,85 @@ public class Example {
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MeldebereichControllerApi#getMeldungenForMeldebereich");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **meldebereichId** | **String**|  | |
+| **page** | **Integer**|  | [optional] [default to 0] |
+| **size** | **Integer**|  | [optional] |
+| **meldungsversion** | **String**|  | [optional] [enum: V2, V1] |
+| **nurLetzteMeldung** | **Boolean**|  | [optional] [default to false] |
+
+### Return type
+
+[**MeldungshistorieContainerDto**](MeldungshistorieContainerDto.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, */*
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **400** | bad request |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+| **200** | success |  -  |
+| **404** | not found |  -  |
+
+<a id="getMeldungenForMeldebereichIncludeInactive"></a>
+# **getMeldungenForMeldebereichIncludeInactive**
+> MeldungshistorieContainerDto getMeldungenForMeldebereichIncludeInactive(meldebereichId, page, size, meldungsversion, nurLetzteMeldung)
+
+
+
+Will return all (active/inactive) Meldungen for the given Meldebereich
+
+### Example
+```java
+// Import classes:
+import de.vertama.divi.client.invoker.ApiClient;
+import de.vertama.divi.client.invoker.ApiException;
+import de.vertama.divi.client.invoker.Configuration;
+import de.vertama.divi.client.invoker.auth.*;
+import de.vertama.divi.client.invoker.models.*;
+import de.vertama.divi.client.api.MeldebereichControllerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://uat.intensivregister.de/api");
+    
+    // Configure HTTP bearer authorization: bearer
+    HttpBearerAuth bearer = (HttpBearerAuth) defaultClient.getAuthentication("bearer");
+    bearer.setBearerToken("BEARER TOKEN");
+
+    MeldebereichControllerApi apiInstance = new MeldebereichControllerApi(defaultClient);
+    String meldebereichId = "meldebereichId_example"; // String | 
+    Integer page = 0; // Integer | 
+    Integer size = 56; // Integer | 
+    String meldungsversion = "V2"; // String | 
+    Boolean nurLetzteMeldung = false; // Boolean | 
+    try {
+      MeldungshistorieContainerDto result = apiInstance.getMeldungenForMeldebereichIncludeInactive(meldebereichId, page, size, meldungsversion, nurLetzteMeldung);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling MeldebereichControllerApi#getMeldungenForMeldebereichIncludeInactive");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -363,16 +443,15 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: */*, application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **400** | bad request |  -  |
+| **400** | Bad Request |  -  |
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 | **200** | successfully |  -  |
-| **404** | not found |  -  |
 
 <a id="getMyMeldebereichePublic"></a>
 # **getMyMeldebereichePublic**
